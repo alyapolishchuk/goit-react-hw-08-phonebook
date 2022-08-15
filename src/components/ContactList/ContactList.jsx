@@ -7,7 +7,6 @@ import {
   filterSelector,
   itemsSelector,
 } from 'redux/contacts/contacts-selectors';
-import { Table, TableBody, TableHead } from '@mui/material';
 import { getIsLogin } from 'redux/auth/auth-selectors';
 
 export default function ContactList() {
@@ -26,8 +25,8 @@ export default function ContactList() {
     dispatch(deleteUser(id));
   };
   return (
-    <Table>
-      <TableHead>
+    <table>
+      <thead>
         <p>№</p>
 
         <p>Avatar</p>
@@ -37,8 +36,8 @@ export default function ContactList() {
         <p>Phone</p>
 
         <p>Options</p>
-      </TableHead>
-      <TableBody>
+      </thead>
+      <tbody>
         {contacts.map(({ id, name, number }, index) => {
           return (
             <ContactItem
@@ -51,7 +50,7 @@ export default function ContactList() {
             />
           );
         })}
-      </TableBody>
-    </Table>
+      </tbody>
+    </table>
   );
 }
