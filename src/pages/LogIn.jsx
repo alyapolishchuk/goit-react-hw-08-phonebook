@@ -70,7 +70,7 @@ export const LogIn = () => {
                 onChange={handleChange}
                 placeholder="Enter Password"
                 type="password"
-                autocomplete="on"
+                autocomplete="new-password"
               />
             </label>
             <Button
