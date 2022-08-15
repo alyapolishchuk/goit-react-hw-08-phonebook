@@ -7,14 +7,7 @@ import {
   filterSelector,
   itemsSelector,
 } from 'redux/contacts/contacts-selectors';
-import {
-  Table,
-  Typography,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-} from '@mui/material';
+import { Table, TableBody, TableHead } from '@mui/material';
 import { getIsLogin } from 'redux/auth/auth-selectors';
 
 export default function ContactList() {
@@ -35,58 +28,15 @@ export default function ContactList() {
   return (
     <Table>
       <TableHead>
-        <TableRow sx={{ backgroundColor: 'black' }}>
-          <TableCell>
-            <Typography
-              variant="h3"
-              gutterBottom
-              component="p"
-              sx={{ color: 'white' }}
-            >
-              №
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography
-              variant="h3"
-              gutterBottom
-              component="p"
-              sx={{ color: 'white' }}
-            >
-              Avatar
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography
-              variant="h3"
-              gutterBottom
-              component="p"
-              sx={{ color: 'white' }}
-            >
-              Name
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography
-              variant="h3"
-              gutterBottom
-              component="p"
-              sx={{ color: 'white' }}
-            >
-              Phone
-            </Typography>
-          </TableCell>
-          <TableCell>
-            <Typography
-              variant="h3"
-              gutterBottom
-              component="p"
-              sx={{ color: 'white' }}
-            >
-              Options
-            </Typography>
-          </TableCell>
-        </TableRow>
+        <p>№</p>
+
+        <p>Avatar</p>
+
+        <p>Name</p>
+
+        <p>Phone</p>
+
+        <p>Options</p>
       </TableHead>
       <TableBody>
         {contacts.map(({ id, name, number }, index) => {

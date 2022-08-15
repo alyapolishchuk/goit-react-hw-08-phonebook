@@ -1,22 +1,15 @@
 import PropTypes from 'prop-types';
-import { Box, Typography } from '@mui/material';
 
 
 export default function Section({ title, children }) {
   return (
-      <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+      <div
     >
-      <Typography variant="h2" gutterBottom component="h2">
+      <h2>
         {title}
-      </Typography>
+      </h2>
       {children}
-    </Box>
+    </div>
   );
 }
 

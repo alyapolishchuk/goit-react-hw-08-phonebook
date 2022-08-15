@@ -1,43 +1,23 @@
 import PropTypes from 'prop-types';
 // import css from './ContactItem.module.css';
-import { Button, Typography, TableCell, TableRow } from '@mui/material';
+// import { Button, Divider, TableCell, TableRow } from '@mui/material';
 import Avatar from 'react-avatar';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function ContactItem({ name, phone, onDelete, id, index }) {
   return (
-    <TableRow>
-      <TableCell>
-        <Typography variant="h3" gutterBottom component="p">
-          {index + 1}
-        </Typography>
-      </TableCell>
-      <TableCell>
-        <Avatar name={name} size={60} round={true} />
-      </TableCell>
-      <TableCell>
-        <Typography variant="h3" gutterBottom component="p">
-          {name}
-        </Typography>
-      </TableCell>
+    <div>
+      <p>{index + 1}</p>
 
-      <TableCell>
-        <Typography variant="h3" gutterBottom component="p">
-          {phone}
-        </Typography>
-      </TableCell>
-      <TableCell>
-        <Button
-          sx={{ fontSize: '24px' }}
-          size="large"
-          variant="contained"
-          type="button"
-          onClick={() => onDelete(id)}
-        >
-          <DeleteForeverIcon sx={{ fontSize: 40, color: 'white' }} />
-        </Button>
-      </TableCell>
-    </TableRow>
+      <Avatar name={name} size={60} round={true} />
+
+      <p>{name}</p>
+
+      <p>{phone}</p>
+
+      <button type="button" onClick={() => onDelete(id)}>
+        <img src="https://www.pngall.com/wp-content/uploads/5/Delete-Transparent.png" alt="delete" width="50px"/>
+      </button>
+    </div>
   );
 }
 
