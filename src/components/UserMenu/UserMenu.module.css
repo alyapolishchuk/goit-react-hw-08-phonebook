@@ -1,0 +1,67 @@
+.spanchik {
+  color: var(--main-color);
+  margin-right: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user_container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.activeLink {
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--third-color);
+  line-height: 1.62;
+  border: transparent;
+  padding: 6px 22px;
+  transition: box-shadow var(--animation), color var(--animation);
+  background-color: var(--animation);
+  border-radius: 5px;
+  color: var(--main-color);
+}
+
+.link {
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--third-color);
+  line-height: 1.62;
+  border: transparent;
+  padding: 6px 22px;
+  transition: box-shadow var(--animation), color var(--animation),
+    background-color var(--animation);
+  border-radius: 5px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--second-color);
+  background-color: var(--main-color);
+  box-shadow: 0px 3px 1px rgb(0 0 0 / 10%), 0px 1px 2px rgb(0 0 0 / 8%),
+    0px 2px 2px rgb(0 0 0 / 12%);
+}
+
+.header {
+  background-color: var(--third-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
+
+  border-bottom: 2px solid var(--main-color);
+}

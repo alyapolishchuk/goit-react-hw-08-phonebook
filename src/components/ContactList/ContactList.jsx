@@ -1,56 +1,40 @@
-import ContactItem from './ContactItem';
-// import css from './ContactList.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { ContactListItem } from '../ContactListItem/ContactListItem';
+import styles from './ContactList.module.css';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteUser, getUsers } from 'redux/contacts/contscts-actions';
-import {
-  filterSelector,
-  itemsSelector,
-} from 'redux/contacts/contacts-selectors';
-import { getisLogin } from '../../redux/auth/auth-selectors';
+import { getContacts } from 'Redux/Contacts/contacts-operations';
+import { deleteContacts } from 'Redux/Contacts/contacts-operations';
 
-export default function ContactList() {
-  const items = useSelector(itemsSelector);
-  const filter = useSelector(filterSelector);
+export const ContactList = () => {
+  const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
-  const isLogin = useSelector(getisLogin);
-  const contacts = items?.filter(({ name }) =>
-    name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
-  );
+  const filter = useSelector(state => state.contacts.filter);
+
   useEffect(() => {
-    isLogin && dispatch(getUsers());
-  }, [dispatch, isLogin]);
+    dispatch(getContacts());
+  }, [dispatch]);
 
-  const deleteContact = id => {
-    dispatch(deleteUser(id));
+  const handlerDelete = id => {
+    dispatch(deleteContacts(id));
   };
+
+  const getContactList = () => {
+    return contacts.filter(user =>
+      user.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   return (
-    <table>
-      <thead>
-        <p>№</p>
-
-        <p>Avatar</p>
-
-        <p>Name</p>
-
-        <p>Phone</p>
-
-        <p>Options</p>
-      </thead>
-      <tbody>
-        {contacts.map(({ id, name, number }, index) => {
-          return (
-            <ContactItem
-              index={index}
-              key={id}
-              id={id}
-              name={name}
-              phone={number}
-              onDelete={deleteContact}
-            />
-          );
-        })}
-      </tbody>
-    </table>
+    <ul className={styles.list}>
+      {getContactList()?.map(({ id, name, number }) => (
+        <ContactListItem
+          key={id}
+          name={name}
+          number={number}
+          onDelete={handlerDelete}
+          id={id}
+        />
+      ))}
+    </ul>
   );
-}
+};

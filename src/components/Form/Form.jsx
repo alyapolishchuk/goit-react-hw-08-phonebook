@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import css from './Form.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { addUser } from 'redux/contacts/contscts-actions';
-import { itemsSelector } from 'redux/contacts/contacts-selectors';
-import { toast } from 'react-toastify';
-import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
-import { NavLink } from 'react-router-dom';
+import styles from './Form.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContacts } from 'Redux/Contacts/contacts-operations';
+import Button from '@mui/material/Button';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
-const Form = () => {
+export default function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(itemsSelector);
+
+  const contacts = useSelector(state => state.contacts.items);
+
   const dispatch = useDispatch();
 
-  const handlerChange = ({ target: { name, value } }) => {
+  const handleChange = evt => {
+    const { name, value } = evt.target;
     switch (name) {
       case 'name':
         setName(value);
@@ -22,71 +22,77 @@ const Form = () => {
       case 'number':
         setNumber(value);
         break;
-
       default:
-        break;
+        return;
     }
   };
 
-  const handlerSubmit = e => {
-    e.preventDefault();
-    const id = nanoid();
-    if (!name || !number) {
-      toast.alert('Please, fill all fields');
-      return;
-    }
-    const inContacts = contacts.some(
-      item => item.name.toLowerCase() === name.toLowerCase()
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+    const contactFilter = contacts?.some(
+      option => option.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (inContacts) {
-      toast.alert(`${name} is already in contacts`);
+    if (contactFilter) {
+      alert(`${name} is already in contacts.`);
       return;
     }
+    const user = { name, number };
 
-    dispatch(addUser({ name, number, id }));
+    dispatch(addContacts(user));
     setName('');
     setNumber('');
   };
 
   return (
-    <form className={css.form} onSubmit={handlerSubmit}>
-      <label className={css.label}>
-        Name
-        <input
-          className={css.input1}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          value={name}
-          onChange={handlerChange}
-          required
-        />
-      </label>
-      <label className={css.label}>
-        Number
-        <input
-          className={css.input2}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          value={number}
-          onChange={handlerChange}
-          required
-        />
-      </label>
-      <button className={css.button} type="submit">
-        Add contact
-      </button>
-      <NavLink to="/goit-react-hw-08-phonebook/contacts">
-        <KeyboardDoubleArrowUpOutlinedIcon
-          sx={{ fontSize: 80, color: 'lightgreen' }}
-        />
-      </NavLink>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.label}>
+          Name
+          <input
+            className={styles.input}
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+        </label>
+        <label className={styles.label}>
+          Number
+          <input
+            className={styles.input}
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleChange}
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+        </label>
+        <Button
+          sx={{
+            fontFamily: 'inherit',
+            color: '#e9967a',
+            backgroundColor: '#fff0f5',
+            border: '1px solid #e9967a ',
+            '&:hover': {
+              color: '#fff8dc',
+              background: '#e9967a',
+              border: '1px solid #e9967a',
+            },
+          }}
+          type="submit"
+          variant="contained"
+          endIcon={<AddBoxIcon />}
+        >
+          Add contact
+        </Button>
+      </form>
+    </>
   );
-};
-
-export { Form };
+}

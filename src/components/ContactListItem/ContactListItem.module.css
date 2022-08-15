@@ -1,32 +1,11 @@
-.form {
+.listItem {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
-  border: 2px solid var(--main-color);
-  border-radius: 5px;
-  padding: 10px;
-  color: var(--main-color);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.label {
-  display: flex;
-  flex-direction: column;
+.listItem:not(:last-child) {
   margin-bottom: 10px;
-  font-family: var(--font);
-  width: 400px;
-}
-
-.input {
-  background-color: var(--third-color);
-  border: 1px solid var(--main-color);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-  border-radius: 4px;
-  padding: 10px;
-  color: var(--main-color);
 }
 
 .btn {
@@ -35,8 +14,6 @@
   background-color: var(--third-color);
   line-height: 1.62;
   border: transparent;
-  padding: 6px 22px;
-  width: 150px;
   transition: box-shadow var(--animation), color var(--animation),
     background-color var(--animation);
   border-radius: 5px;

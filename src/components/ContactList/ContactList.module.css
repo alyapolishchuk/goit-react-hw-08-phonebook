@@ -1,8 +1,7 @@
-.list{
-    width: 750px;
-    margin-top: 20px;
-    padding: 30px;
-    border: 2px dashed rgba(137, 43, 226, 0.471);
-    background-color: rgba(137, 43, 226, 0.154);
-    border-radius: 10px;
+.list {
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--main-color);
 }

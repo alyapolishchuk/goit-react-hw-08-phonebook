@@ -1,42 +1,46 @@
-import { addUser, deleteUser, filterUser, getUsers } from './contscts-actions';
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
-//----------------------------------------------------------------//
+import { filterContacts } from './contacts-actions';
+import {
+  getContacts,
+  addContacts,
+  deleteContacts,
+} from './contacts-operations';
 
-const itemReducer = createReducer([], {
-  [getUsers.fulfilled]: (_, { payload }) => payload,
-  [addUser.fulfilled]: (state, { payload }) => [...state, payload],
-  [deleteUser.fulfilled]: (state, { payload }) =>
-    state.filter(({id}) => id !== payload),
+const itemsReducer = createReducer([], {
+  [getContacts.fulfilled]: (_, action) => action.payload,
+  [addContacts.fulfilled]: (state, action) => [...state, action.payload],
+  [deleteContacts.fulfilled]: (state, action) =>
+    state.filter(el => el.id !== action.payload),
+});
+
+const errorReducer = createReducer(null, {
+  [getContacts.rejected]: (_, action) => action.payload,
+  [addContacts.rejected]: (_, action) => action.payload,
+  [deleteContacts.rejected]: (_, action) => action.payload,
+  [getContacts.pending]: () => null,
+  [addContacts.pending]: () => null,
+  [deleteContacts.pending]: () => null,
+});
+
+const pendingReducer = createReducer(false, {
+  [getContacts.pending]: () => true,
+  [getContacts.fulfilled]: () => false,
+  [getContacts.rejected]: () => false,
+  [addContacts.pending]: () => true,
+  [addContacts.fulfilled]: () => false,
+  [addContacts.rejected]: () => false,
+  [deleteContacts.pending]: () => true,
+  [deleteContacts.fulfilled]: () => false,
+  [deleteContacts.rejected]: () => false,
 });
 
 const filterReducer = createReducer('', {
-  [filterUser]: (_, { payload }) => payload,
-});
-
-const errorReducer = createReducer('', {
-  [getUsers.rejected]: (_, { payload }) => payload,
-  [addUser.rejected]: (_, { payload }) => payload,
-  [deleteUser.rejected]: (_, { payload }) => payload,
-  [getUsers.pending]: () => '',
-  [addUser.pending]: () => '',
-  [deleteUser.pending]: () => '',
-});
-
-const loadingReducer = createReducer(false, {
-  [getUsers.pending]: () => true,
-  [getUsers.fulfilled]: () => false,
-  [getUsers.rejected]: () => false,
-  [addUser.pending]: () => true,
-  [addUser.fulfilled]: () => false,
-  [addUser.rejected]: () => false,
-  [deleteUser.pending]: () => true,
-  [deleteUser.fulfilled]: () => false,
-  [deleteUser.rejected]: () => false,
+  [filterContacts]: (_, action) => action.payload,
 });
 
 export const contactsReducer = combineReducers({
-  items: itemReducer,
-  filter: filterReducer,
+  items: itemsReducer,
   error: errorReducer,
-  isLoading: loadingReducer,
+  pending: pendingReducer,
+  filter: filterReducer,
 });

@@ -1,98 +1,63 @@
-import { Form } from './Form/Form';
-import Section from './Section/Section';
-// import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-// import {
-//   errorSelector,
-//   loadingSelector,
-// } from 'redux/contacts/contacts-selectors';
-// import { MutatingDots } from 'react-loader-spinner';
 import { Route, Routes } from 'react-router-dom';
-import { getRefresh } from '../redux/auth/auth-operations';
-import ContactsView from '../views/ContactsView/ContactsView';
-import LoginView from '../views/LoginView/LoginView';
-import RegistrationView from '../views/RegistrationView/RegistrationView';
-import { LayOut } from '../components/Layout/Layout';
-import { getToken } from '../redux/auth/auth-selectors';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.min.css';
-// import { Box } from '@mui/material';
-import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
-import PublicRoute from '../components/PublicRoute/PublicRoute';
-// import HomeView from '../views/HomeView/HomeView';
-import NotFound from '../components/NotFound/NotFound';
+import { LogIn } from 'pages/LogIn';
+import { Registration } from '../pages/Registration';
+import { AppBar } from './UserMenu/AppBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getRefresh } from 'Redux/auth/auth-operations';
+import { Contacts } from '../pages/Contacts';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
+import { getToken } from 'Redux/auth/auth-selectors';
+import { getisRefreshed } from 'Redux/auth/auth-selectors';
+import { Loader } from './Loader/Loader';
+import { NotFound } from 'pages/NotFound';
 
-
-
-
-
-const App = () => {
+export const App = () => {
   const dispatch = useDispatch();
-  const accountToken = useSelector(getToken);
+  const token = useSelector(getToken);
+  const isRefreshed = useSelector(getisRefreshed);
 
   useEffect(() => {
     dispatch(getRefresh());
-  }, [dispatch, accountToken]);
+  }, [dispatch, token]);
 
   return (
     <>
-      <div
-        // sx={{
-        //   height: '100vh',
-        //   width: '100vw',
-        //   display: 'flex',
-        //   flexDirection: 'column',
-        //   gap: '45px',
-        //   marginTop: '100px',
-        //   margin: '0 auto',
-        // }}
-      >
-        <Routes>
-          <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
-            {/* <Route index element={<HomeView />} /> */}
+      {isRefreshed ? (
+        <Loader />
+      ) : (
+        <>
+          <AppBar />
+          <Routes>
             <Route
-              path="register"
+              path="/"
               element={
                 <PublicRoute>
-                  <RegistrationView />
+                  <Registration />
                 </PublicRoute>
               }
             ></Route>
             <Route
-              path="login"
+              path="/login"
               element={
                 <PublicRoute>
-                  <LoginView />
+                  <LogIn />
                 </PublicRoute>
               }
             ></Route>
             <Route
-              path="contacts"
+              path="/contacts"
               element={
                 <PrivateRoute>
-                  <ContactsView />
+                  <Contacts />
                 </PrivateRoute>
               }
-            >
-              <Route
-                path="add"
-                element={
-                  <Section title="Add contact">
-                    <Form />
-                  </Section>
-                }
-              ></Route>
-              <Route path="search" element={<Filter />}></Route>
-            </Route>
-          </Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-        {/* <ToastContainer autoClose={2000} theme="colored" /> */}
-      </div>
+            ></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </>
+      )}
     </>
   );
 };
-
-export { App };
