@@ -3,7 +3,7 @@ import styles from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'Redux/Contacts/contacts-operations';
 import Button from '@mui/material/Button';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 export default function Form() {
   const [name, setName] = useState('');
@@ -77,18 +77,18 @@ export default function Form() {
         <Button
           sx={{
             fontFamily: 'inherit',
-            color: '#e9967a',
-            backgroundColor: '#fff0f5',
-            border: '1px solid #e9967a ',
+            color: '#d7a7ed',
+            backgroundColor: '#a5cae8',
+            border: '1px solid #3677d7 ',
             '&:hover': {
               color: '#fff8dc',
-              background: '#e9967a',
-              border: '1px solid #e9967a',
+              background: '#e47ae9',
+              border: '1px solid #d444b0',
             },
           }}
           type="submit"
           variant="contained"
-          endIcon={<AddBoxIcon />}
+          endIcon={<AddBoxOutlinedIcon />}
         >
           Add contact
         </Button>

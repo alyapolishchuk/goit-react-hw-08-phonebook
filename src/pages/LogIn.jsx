@@ -50,6 +50,7 @@ export const LogIn = () => {
           <h2>Log In</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
             <label className={styles.label}>
+              Email
               <input
                 className={styles.input}
                 name="email"
@@ -73,12 +74,13 @@ export const LogIn = () => {
             <Button
               sx={{
                 fontFamily: 'inherit',
-                color: '#e9967a',
-                backgroundColor: '#fff0f5',
-                border: '1px solid #e9967a ',
+                color: '#3b2d41',
+                backgroundColor: '#a5cae8',
+                border: '1px solid #3677d7 ',
                 '&:hover': {
                   color: '#fff8dc',
-                  background: '#e9967a',
+                  background: '#e47ae9',
+                  border: '1px solid #d444b0',
                 },
               }}
               type="submit"

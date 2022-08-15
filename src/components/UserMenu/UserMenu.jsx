@@ -3,7 +3,7 @@ import { logOut } from 'Redux/auth/auth-operations';
 import { getUserName } from 'Redux/auth/auth-selectors';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import LogoutIcon from '@mui/icons-material/Logout';
+import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';
 
 import styles from '../UserMenu/UserMenu.module.css';
 
@@ -19,12 +19,12 @@ export const UserMenu = () => {
       <Button
         sx={{
           fontFamily: 'inherit',
-          color: '#e9967a',
-          backgroundColor: '#fff0f5',
-          border: '1px solid #e9967a ',
+          color: '#7ab3e9',
+          backgroundColor: '#eabcef',
+          border: '1px solid #807ae9 ',
           '&:hover': {
-            color: '#fff8dc',
-            background: '#e9967a',
+            color: '#fffffe',
+            background: '#e97ae7',
           },
         }}
         type="button"
@@ -33,7 +33,7 @@ export const UserMenu = () => {
           return navigate('/login');
         }}
         variant="contained"
-        endIcon={<LogoutIcon />}
+        endIcon={<MeetingRoomOutlinedIcon />}
       >
         Log Out
       </Button>

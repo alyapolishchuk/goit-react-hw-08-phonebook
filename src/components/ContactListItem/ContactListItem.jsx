@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './ContactListItem.module.css';
 import Button from '@mui/material/Button';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
@@ -12,18 +12,18 @@ export const ContactListItem = ({ id, name, number, onDelete }) => {
       <Button
         sx={{
           fontFamily: 'inherit',
-          color: '#e9967a',
-          backgroundColor: '#fff0f5',
-          border: '1px solid #e9967a ',
+          color: '#d7a7ed',
+          backgroundColor: '#a5cae8',
+          border: '1px solid #3677d7 ',
           '&:hover': {
             color: '#fff8dc',
-            background: '#e9967a',
-            border: '1px solid #e9967a',
+            background: '#e47ae9',
+            border: '1px solid #d444b0',
           },
         }}
         onClick={() => onDelete(id)}
         variant="outlined"
-        endIcon={<DeleteForeverIcon />}
+        endIcon={<DeleteOutlineIcon />}
       >
         Delete
       </Button>

@@ -5,7 +5,7 @@ import styles from '../components/Form/Form.module.css';
 import { getisLogin } from 'Redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 
 export const Registration = () => {
   const [name, setName] = useState('');
@@ -86,17 +86,17 @@ export const Registration = () => {
             <Button
               sx={{
                 fontFamily: 'inherit',
-                color: '#e9967a',
-                backgroundColor: '#fff0f5',
-                border: '1px solid #e9967a ',
+                color: '#3b2d41',
+                backgroundColor: '#a5cae8',
+                border: '1px solid #3677d7 ',
                 '&:hover': {
                   color: '#fff8dc',
-                  background: '#e9967a',
-                  border: '1px solid #e9967a',
+                  background: '#e47ae9',
+                  border: '1px solid #d444b0',
                 },
               }}
               variant="contained"
-              endIcon={<AppRegistrationIcon />}
+              endIcon={<HowToRegIcon />}
             >
               Register
             </Button>
