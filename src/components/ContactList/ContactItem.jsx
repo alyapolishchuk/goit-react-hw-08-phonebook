@@ -1,23 +1,43 @@
 import PropTypes from 'prop-types';
-import css from './ContactItem.module.css';
-import { useSelector } from 'react-redux';
-import { loadingSelector } from 'redux/contacts/contacts-selectors';
+// import css from './ContactItem.module.css';
+import { Button, Typography, TableCell, TableRow } from '@mui/material';
+import Avatar from 'react-avatar';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export default function ContactItem({ name, phone, onDelete, id }) {
-  const loading = useSelector(loadingSelector);
+export default function ContactItem({ name, phone, onDelete, id, index }) {
   return (
-    <li className={css.li}>
-      <span className={css.names}>{name}:</span>
-      <span className={css.phones}>{phone}</span>
-      <button
-        className={css.buttons}
-        type="button"
-        disabled={loading}
-        onClick={() => onDelete(id)}
-      >
-        Delete
-      </button>
-    </li>
+    <TableRow>
+      <TableCell>
+        <Typography variant="h3" gutterBottom component="p">
+          {index + 1}
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <Avatar name={name} size={60} round={true} />
+      </TableCell>
+      <TableCell>
+        <Typography variant="h3" gutterBottom component="p">
+          {name}
+        </Typography>
+      </TableCell>
+
+      <TableCell>
+        <Typography variant="h3" gutterBottom component="p">
+          {phone}
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <Button
+          sx={{ fontSize: '24px' }}
+          size="large"
+          variant="contained"
+          type="button"
+          onClick={() => onDelete(id)}
+        >
+          <DeleteForeverIcon sx={{ fontSize: 40, color: 'white' }} />
+        </Button>
+      </TableCell>
+    </TableRow>
   );
 }
 
@@ -26,4 +46,5 @@ ContactItem.propTypes = {
   phone: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
 };
