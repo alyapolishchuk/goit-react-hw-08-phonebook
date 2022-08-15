@@ -58,6 +58,7 @@ export const LogIn = () => {
                 onChange={handleChange}
                 placeholder="Enter Email"
                 type="email"
+                autocomplete="on"
               />
             </label>
             <label className={styles.label}>
@@ -69,6 +70,7 @@ export const LogIn = () => {
                 onChange={handleChange}
                 placeholder="Enter Password"
                 type="password"
+                autocomplete="on"
               />
             </label>
             <Button
