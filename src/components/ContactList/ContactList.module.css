@@ -1,7 +1,36 @@
-.list {
-  color: var(--main-color);
-  border: 2px solid var(--main-color);
+.contact__item {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact__text {
+  width: 250px;
+  margin: 0;
+  margin-right: 20px;
+  font-size: 20px;
+  font-weight: 800;
+}
+.contact__num {
+  color: blueviolet;
+}
+.contact__btn {
+  width: 100px;
+  height: 20px;
   border-radius: 5px;
-  padding: 10px;
-  color: var(--main-color);
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: coral;
+  color: white;
+}
+.contact__btn:hover {
+  background-color: chocolate;
+}
+.loader {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }

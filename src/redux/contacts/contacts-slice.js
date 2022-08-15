@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const contactManager = createSlice({
-  name: 'contacts',
+  name: 'contact',
   initialState,
   reducers: {
     addContact: (state, action) => {

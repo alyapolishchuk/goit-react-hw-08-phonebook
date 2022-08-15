@@ -1,4 +1,4 @@
 export const getToken = state => state.auth.token;
-export const getisLogin = state => state.auth.isLogin;
+export const getIsLogged = state => state.auth.isLogged;
 export const getUserName = state => state.auth.user.name;
-export const getisRefreshed = state => state.auth.isRefreshed;
+export const getIsRefreshed = state => state.auth.isRefreshed;

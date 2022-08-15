@@ -1,27 +1,31 @@
-import { useDispatch, useSelector } from 'react-redux';
-import styles from '../Form/Form.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/contacts/contacts-actions';
+import TextField from '@mui/material/TextField';
+import s from './Filter.module.css';
 
-export const Filter = () => {
-  const name = useSelector(state => state.contacts.filter);
+export default function Filter() {
   const dispatch = useDispatch();
+  const name = useSelector(state => state.contacts.filter);
 
-  const handlerInput = evt => {
-    dispatch(filterContacts(evt.target.value));
+  const handlerFilterUsers = e => {
+    dispatch(filterContacts(e.target.value));
   };
 
   return (
-    <form className={styles.form}>
-      <label className={styles.label}>
-        Find Contacts by name
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          value={name}
-          onChange={handlerInput}
-        />
-      </label>
-    </form>
+    <div className={s.input_wrapper}>
+      <h2>Find contacts by name</h2>
+      <TextField
+        className={s.input}
+        type="text"
+        label="Name"
+        name="name"
+        variant="outlined"
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        value={name}
+        onChange={handlerFilterUsers}
+      />
+    </div>
   );
-};
+}

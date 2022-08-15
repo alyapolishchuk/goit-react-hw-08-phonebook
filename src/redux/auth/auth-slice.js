@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signIn, logIn, logOut, getRefresh } from './auth-operations';
+
+import { signIn, logIn, logOut, getCurrentUser } from './auth-operations';
 
 const initialState = {
   user: {
@@ -7,52 +8,40 @@ const initialState = {
     email: '',
   },
   token: null,
-  isLogin: false,
-  isRefreshed: false,
+  isLogged: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    // [signIn.pending]: (state, { payload }) => {
-    //   state.isLogin = false;
-    // },
-    // [signIn.rejected]: (state, { payload }) => {
-    //   state.isLogin = false;
-    // },
     [signIn.fulfilled]: (state, { payload }) => {
       state.token = payload.token;
+      state.isLogged = true;
       state.user = payload.user;
-      state.isLogin = true;
     },
-    // [logIn.pending]: (state, { payload }) => {
-    //   state.isLogin = false;
-    // },
-    // [logIn.rejected]: (state, { payload }) => {
-    //   state.isLogin = false;
-    // },
     [logIn.fulfilled]: (state, { payload }) => {
       state.token = payload.token;
+      state.isLogged = true;
       state.user = payload.user;
-      state.isLogin = true;
     },
     [logOut.fulfilled]: (state, { payload }) => {
       state.token = '';
-      state.user = { name: '', email: '' };
-      state.isLogin = false;
+      state.isLogged = false;
+      state.user.name = '';
+      state.user.email = '';
     },
-    [getRefresh.fulfilled]: (state, { payload }) => {
+    [getCurrentUser.fulfilled]: (state, { payload }) => {
       state.user = payload;
-      state.isLogin = true;
-      // state.isRefreshed = false;
+      state.isLogged = true;
+      state.isRefreshed = false;
     },
-    // [getRefresh.pending]: (state, { payload }) => {
-    //   state.isRefreshed = true;
-    // },
-    [getRefresh.rejected]: (state, { payload }) => {
+    [getCurrentUser.pending]: (state, { payload }) => {
+      state.isRefreshed = true;
+    },
+    [getCurrentUser.rejected]: (state, { payload }) => {
       state.token = '';
-      // state.isRefreshed = false;
+      state.isRefreshed = false;
     },
   },
 });

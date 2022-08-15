@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { getisLogin } from 'redux/auth/auth-selectors';
+import { getIsLogged } from 'redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
 
 export default function PublicRoute({ children }) {
-  const isLogin = useSelector(getisLogin);
+  const isLogin = useSelector(getIsLogged);
   return isLogin ? <Navigate to="/contacts" /> : children;
 }
