@@ -9,6 +9,7 @@ import {
 } from 'redux/contacts/contacts-selectors';
 import { MutatingDots } from 'react-loader-spinner';
 
+
 const App = () => {
   const customError = useSelector(errorSelector);
   const loading = useSelector(loadingSelector);
