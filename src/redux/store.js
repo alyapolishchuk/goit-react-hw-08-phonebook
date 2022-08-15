@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { contactsReducer } from './Contacts/contacts-reducers';
+import { contactsReducer } from './contacts/contacts-reducers';
 import {
   persistStore,
   persistReducer,
