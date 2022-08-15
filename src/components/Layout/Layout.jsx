@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { Outlet, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
+import { getisLogin, getUserName } from 'redux/auth/auth-selectors';
 import { logOut } from 'redux/auth/auth-operations';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -14,7 +14,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 //------------------------------------------------------//
 
 function LayOut() {
-  const isLogin = useSelector(getIsLogin);
+  const isLogin = useSelector(getisLogin);
   const name = useSelector(getUserName);
   const dispatch = useDispatch();
 

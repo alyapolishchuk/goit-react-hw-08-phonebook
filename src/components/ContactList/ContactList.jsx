@@ -7,13 +7,13 @@ import {
   filterSelector,
   itemsSelector,
 } from 'redux/contacts/contacts-selectors';
-import { getIsLogin } from 'redux/auth/auth-selectors';
+import { getisLogin } from '../../redux/auth/auth-selectors';
 
 export default function ContactList() {
   const items = useSelector(itemsSelector);
   const filter = useSelector(filterSelector);
   const dispatch = useDispatch();
-  const isLogin = useSelector(getIsLogin);
+  const isLogin = useSelector(getisLogin);
   const contacts = items?.filter(({ name }) =>
     name.toLocaleLowerCase().includes(filter.toLocaleLowerCase())
   );
