@@ -16,12 +16,12 @@ import LoginView from '../views/LoginView/LoginView';
 import RegistrationView from '../views/RegistrationView/RegistrationView';
 import { LayOut } from '../components/Layout/Layout';
 import { getToken } from '../redux/auth/auth-selectors';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
-import { Box } from '@mui/material';
+// import { ToastContainer } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.min.css';
+// import { Box } from '@mui/material';
 import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 import PublicRoute from '../components/PublicRoute/PublicRoute';
-import HomeView from '../views/HomeView/HomeView';
+// import HomeView from '../views/HomeView/HomeView';
 import NotFound from '../components/NotFound/NotFound';
 
 
@@ -38,20 +38,20 @@ const App = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          height: '100vh',
-          width: '100vw',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '45px',
-          marginTop: '100px',
-          margin: '0 auto',
-        }}
+      <div
+        // sx={{
+        //   height: '100vh',
+        //   width: '100vw',
+        //   display: 'flex',
+        //   flexDirection: 'column',
+        //   gap: '45px',
+        //   marginTop: '100px',
+        //   margin: '0 auto',
+        // }}
       >
         <Routes>
           <Route path="/goit-react-hw-08-phonebook/" element={<LayOut />}>
-            <Route index element={<HomeView />} />
+            {/* <Route index element={<HomeView />} /> */}
             <Route
               path="register"
               element={
@@ -89,8 +89,8 @@ const App = () => {
           </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
-        <ToastContainer autoClose={2000} theme="colored" />
-      </Box>
+        {/* <ToastContainer autoClose={2000} theme="colored" /> */}
+      </div>
     </>
   );
 };

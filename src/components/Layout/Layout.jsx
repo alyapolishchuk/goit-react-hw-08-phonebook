@@ -6,12 +6,11 @@ import { Outlet, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getIsLogin, getUserName } from 'redux/auth/auth-selectors';
 import { logOut } from 'redux/auth/auth-operations';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded';
-import LogoutIcon from '@mui/icons-material/Logout';
-import LoginIcon from '@mui/icons-material/Login';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import { Button } from '@mui/material';
+import HomeWorkTwoToneIcon from '@mui/icons-material/HomeWorkTwoTone';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 //------------------------------------------------------//
 
 function LayOut() {
@@ -30,36 +29,34 @@ function LayOut() {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-around',
-            backgroundColor: '#618833',
+            backgroundColor: '#9fe74d',
           }}
         >
           {isLogin && (
             <>
               <p>{name}</p>
 
-              <button
-                onClick={handlerLogout}
-              >
-                <LogoutIcon sx={{ fontSize: 40, color: 'white' }} />
+              <button onClick={handlerLogout}>
+                <LogoutOutlinedIcon sx={{ fontSize: 60, color: 'black' }} />
               </button>
               <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
                 <ImportContactsRoundedIcon
-                  sx={{ fontSize: 40, color: 'white' }}
+                  sx={{ fontSize: 60, color: 'black' }}
                 />
               </NavLink>
             </>
           )}
           <NavLink to={'/goit-react-hw-08-phonebook/'}>
-            <HomeRoundedIcon sx={{ fontSize: 40, color: 'white' }} />
+            <HomeWorkTwoToneIcon sx={{ fontSize: 80, color: 'black' }} />
           </NavLink>
 
           {!isLogin && (
             <>
               <NavLink to={'/goit-react-hw-08-phonebook/register'}>
-                <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
+                <ExitToAppIcon sx={{ fontSize: 80, color: 'black' }} />
               </NavLink>
               <NavLink to={'/goit-react-hw-08-phonebook/login'}>
-                <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
+                <MeetingRoomIcon sx={{ fontSize: 80, color: 'black' }} />
               </NavLink>
             </>
           )}
@@ -68,9 +65,11 @@ function LayOut() {
       <Box
         sx={{
           width: 600,
-          height: 360,
-          backgroundColor: '#8bc34a',
+          height: 60,
+          backgroundColor: '#8bc34a5a',
           borderRadius: '20px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
         }}
       >
         <Outlet />

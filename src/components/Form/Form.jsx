@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from 'redux/contacts/contscts-actions';
 import { itemsSelector } from 'redux/contacts/contacts-selectors';
 import { toast } from 'react-toastify';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
 import { NavLink } from 'react-router-dom';
 
 const Form = () => {
@@ -81,7 +81,9 @@ const Form = () => {
         Add contact
       </button>
       <NavLink to="/goit-react-hw-08-phonebook/contacts">
-        <KeyboardArrowUpIcon sx={{ fontSize: 60, color: 'blue' }} />
+        <KeyboardDoubleArrowUpOutlinedIcon
+          sx={{ fontSize: 80, color: 'lightgreen' }}
+        />
       </NavLink>
     </form>
   );
