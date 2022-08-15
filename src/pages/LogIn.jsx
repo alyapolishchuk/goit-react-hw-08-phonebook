@@ -57,7 +57,7 @@ export const LogIn = () => {
                 value={email}
                 onChange={handleChange}
                 placeholder="Enter Email"
-                type="teemailxt"
+                type="email"
               />
             </label>
             <label className={styles.label}>
