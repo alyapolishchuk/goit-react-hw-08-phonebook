@@ -4,6 +4,9 @@ import css from './Form.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUser } from 'redux/contacts/contscts-actions';
 import { itemsSelector } from 'redux/contacts/contacts-selectors';
+import { toast } from 'react-toastify';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { NavLink } from 'react-router-dom';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -29,7 +32,7 @@ const Form = () => {
     e.preventDefault();
     const id = nanoid();
     if (!name || !number) {
-      alert('Please, fill all fields');
+      toast.alert('Please, fill all fields');
       return;
     }
     const inContacts = contacts.some(
@@ -37,7 +40,7 @@ const Form = () => {
     );
 
     if (inContacts) {
-      alert(`${name} is already in contacts`);
+      toast.alert(`${name} is already in contacts`);
       return;
     }
 
@@ -77,6 +80,9 @@ const Form = () => {
       <button className={css.button} type="submit">
         Add contact
       </button>
+      <NavLink to="/goit-react-hw-08-phonebook/contacts">
+        <KeyboardArrowUpIcon sx={{ fontSize: 60, color: 'blue' }} />
+      </NavLink>
     </form>
   );
 };
