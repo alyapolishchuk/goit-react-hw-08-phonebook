@@ -1,0 +1,47 @@
+.names {
+  font-size: 30px;
+  color: blueviolet;
+  margin-right: 20px;
+  font-weight: 700;
+  max-width: 700px;
+}
+.names:hover {
+  color: rgb(83, 171, 16);
+  cursor: pointer;
+}
+.phones {
+  font-size: 25px;
+  font-weight: 700;
+  margin-right: 20px;
+  max-width: 700px;
+}
+.phones:hover {
+  color: rgb(83, 171, 16);
+  cursor: pointer;
+}
+.buttons {
+  width: 70px;
+  height: 25px;
+  padding: 1px 5px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: rgba(146, 146, 227, 0.588);
+  border: 2px solid rgba(69, 69, 112, 0.588);
+  border-radius: 10px;
+}
+.buttons:hover {
+  color: red;
+  background-color: rgba(227, 193, 193, 0.588);
+  border: 2px solid rgba(67, 21, 21, 0.817);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 780px;
+}
+.li:not(:last-child){
+    margin-bottom: 10px;
+}
