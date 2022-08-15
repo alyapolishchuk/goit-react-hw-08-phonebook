@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getToken } from 'Redux/auth/auth-selectors';
+import { getToken } from 'redux/auth/auth-selectors';
 import { Navigate } from 'react-router-dom';
 
 export default function PrivateRoute({ children }) {

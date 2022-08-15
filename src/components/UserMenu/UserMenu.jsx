@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from 'Redux/auth/auth-operations';
-import { getUserName } from 'Redux/auth/auth-selectors';
+import { logOut } from 'redux/auth/auth-operations';
+import { getUserName } from 'redux/auth/auth-selectors';
 import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MeetingRoomOutlinedIcon from '@mui/icons-material/MeetingRoomOutlined';

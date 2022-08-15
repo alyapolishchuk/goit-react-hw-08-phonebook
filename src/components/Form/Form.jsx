@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'Redux/Contacts/contacts-operations';
+import { addContacts } from 'redux/contacts/contacts-operations';
 import Button from '@mui/material/Button';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 

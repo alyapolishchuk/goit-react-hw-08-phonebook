@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getisLogin } from 'Redux/auth/auth-selectors';
+import { getisLogin } from 'redux/auth/auth-selectors';
 
 export const NotFound = () => {
   const isLogin = useSelector(getisLogin);

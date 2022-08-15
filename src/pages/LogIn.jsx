@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'Redux/auth/auth-operations';
+import { logIn } from 'redux/auth/auth-operations';
 import styles from '../components/Form/Form.module.css';
-import { getisLogin } from 'Redux/auth/auth-selectors';
+import { getisLogin } from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import LoginIcon from '@mui/icons-material/Login';
 import Button from '@mui/material/Button';

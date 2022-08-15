@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signIn } from 'Redux/auth/auth-operations';
+import { signIn } from 'redux/auth/auth-operations';
 import styles from '../components/Form/Form.module.css';
-import { getisLogin } from 'Redux/auth/auth-selectors';
+import { getisLogin } from 'redux/auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import HowToRegIcon from '@mui/icons-material/HowToReg';

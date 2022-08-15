@@ -2,7 +2,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import Form from 'components/Form/Form';
 import { useSelector } from 'react-redux';
-import { getisLogin } from 'Redux/auth/auth-selectors';
+import { getisLogin } from 'redux/auth/auth-selectors';
 import styles from '../pages/Pages.module.css';
 
 export const Contacts = () => {

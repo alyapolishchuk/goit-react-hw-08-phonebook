@@ -4,12 +4,12 @@ import { Registration } from '../pages/Registration';
 import { AppBar } from './UserMenu/AppBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getRefresh } from 'Redux/auth/auth-operations';
+import { getRefresh } from 'redux/auth/auth-operations';
 import { Contacts } from '../pages/Contacts';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
-import { getToken } from 'Redux/auth/auth-selectors';
-import { getisRefreshed } from 'Redux/auth/auth-selectors';
+import { getToken } from 'redux/auth/auth-selectors';
+import { getisRefreshed } from 'redux/auth/auth-selectors';
 import { Loader } from './Loader/Loader';
 import { NotFound } from 'pages/NotFound';
 
