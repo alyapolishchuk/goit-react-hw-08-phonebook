@@ -12,9 +12,9 @@ body {
 
 :root {
   --font: sans-serif;
-  --main-color: #e9967a;
-  --second-color: #fff8dc;
-  --third-color: #fff0f5;
+  --main-color: #7599edf6;
+  --second-color: #dcf3ff;
+  --third-color: #edacde;
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
