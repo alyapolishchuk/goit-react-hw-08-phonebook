@@ -11,6 +11,7 @@ import ImportContactsRoundedIcon from '@mui/icons-material/ImportContactsRounded
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import { Button } from '@mui/material';
 //------------------------------------------------------//
 
 function LayOut() {
@@ -22,63 +23,59 @@ function LayOut() {
     dispatch(logOut());
   };
   return (
-    <>
-      <div
+    <div>
+      <AppBar position="static" sx={{ width: '100vw' }}>
+        <Toolbar
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            backgroundColor: '#618833',
+          }}
+        >
+          {isLogin && (
+            <>
+              <p>{name}</p>
+
+              <button
+                onClick={handlerLogout}
+              >
+                <LogoutIcon sx={{ fontSize: 40, color: 'white' }} />
+              </button>
+              <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
+                <ImportContactsRoundedIcon
+                  sx={{ fontSize: 40, color: 'white' }}
+                />
+              </NavLink>
+            </>
+          )}
+          <NavLink to={'/goit-react-hw-08-phonebook/'}>
+            <HomeRoundedIcon sx={{ fontSize: 40, color: 'white' }} />
+          </NavLink>
+
+          {!isLogin && (
+            <>
+              <NavLink to={'/goit-react-hw-08-phonebook/register'}>
+                <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
+              </NavLink>
+              <NavLink to={'/goit-react-hw-08-phonebook/login'}>
+                <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
+              </NavLink>
+            </>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Box
         sx={{
-          flexDirection: 'row',
-          display: 'flex',
-          // minHeight: '100vh',
+          width: 600,
+          height: 360,
+          backgroundColor: '#8bc34a',
+          borderRadius: '20px',
         }}
       >
-        <AppBar
-          position="fixed"
-          sx={{ width: '100vw', top: 0, left: 0 }}
-        >
-          <Toolbar
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-            }}
-          >
-            {isLogin && (
-              <>
-                <p
-                >
-                  {name}
-                </p>
-
-                <button onClick={handlerLogout}>
-                  <LogoutIcon sx={{ fontSize: 40, color: 'white' }} />
-                </button>
-                <NavLink to={'/goit-react-hw-08-phonebook/contacts'}>
-                  <ImportContactsRoundedIcon
-                    sx={{ fontSize: 40, color: 'white' }}
-                  />
-                </NavLink>
-              </>
-            )}
-            <NavLink to={'/goit-react-hw-08-phonebook/'}>
-              <HomeRoundedIcon sx={{ fontSize: 40, color: 'white' }} />
-            </NavLink>
-
-            {!isLogin && (
-              <>
-                <NavLink to={'/goit-react-hw-08-phonebook/register'}>
-                  <AppRegistrationIcon sx={{ fontSize: 40, color: 'white' }} />
-                </NavLink>
-                <NavLink to={'/goit-react-hw-08-phonebook/login'}>
-                  <LoginIcon sx={{ fontSize: 40, color: 'white' }} />
-                </NavLink>
-              </>
-            )}
-          </Toolbar>
-        </AppBar>
-        <Box sx={{ flexGrow: 1 }}>
-          <Outlet />
-        </Box>
-      </div>
-    </>
+        <Outlet />
+      </Box>
+    </div>
   );
 }
 
